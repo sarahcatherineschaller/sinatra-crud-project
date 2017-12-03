@@ -40,6 +40,13 @@ class EmployeesController < ApplicationController
 		else 
 			erb :'employees/create_employee'
 		end
+	end
 
+	get '/login' do 
+		if logged_in? 
+			redirect '/show'
+		else 
+			erb: 'employees/login'
+		end 
 	end
 end
