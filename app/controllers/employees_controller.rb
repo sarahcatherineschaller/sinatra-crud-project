@@ -46,7 +46,7 @@ class EmployeesController < ApplicationController
 		if logged_in? 
 			redirect '/show'
 		else 
-			erb: 'employees/login'
+			erb :'employees/login'
 		end 
 	end
 end
