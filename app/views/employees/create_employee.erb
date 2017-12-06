@@ -1,10 +1,5 @@
 <h1>Welcome! Sign Up Here</h1>
 
-<% if !@errors.nil? %>
-	<% @errors.each do |key, value| %>
-		<p style="color: red;"><%= @errors[key] %></p>
-	<% end %>
-<% end %>
 
 <form method="post" action="/signup">
 <label>Name: </label>
@@ -16,7 +11,7 @@
 <label>Address: </label>
 <input type="text" id="address" name="address"><br><br>
 <label>Start Date: </label>
-<input type="text" id="username" name="username"><br><br>
+<input type="text" id="start_date" name="start_date"><br><br>
 <label>Role: </label>
 <select type="text" name="role_id">
 <% Role.all.each do |role| %>
