@@ -42,10 +42,10 @@ class EmployeesController < ApplicationController
 		if @errors.empty? 
 			@employee = Employee.create(name: params[:name], username: params[:username], password: params[:password], address: params[:address], start_date: params[:start_date], role_id: params[:role_id])
 			@employee.save 
-			sessions[:employee_id] = @employee.id
-			redirect '/show'
+			session[:employee_id] = @employee.id
+			redirect '/tasks'
 		else 
-			redirect '/signup'
+			erb :'employees/create_employee'
 		end
 	end
 
