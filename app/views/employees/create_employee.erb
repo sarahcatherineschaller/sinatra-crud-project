@@ -1,5 +1,10 @@
 <h1>Welcome! Sign Up Here</h1>
 
+<% if !@errors.empty? %>
+  <% @errors.each do |key, value| %>
+    <p style="color: red;"><%= @errors[key] %></p>
+  <% end %>
+<% end %>
 
 <form method="post" action="/signup">
 <label>Name: </label>
