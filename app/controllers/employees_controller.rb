@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
 
 	get '/signup' do 
 		if logged_in?
-			redirect '/show'
+			redirect '/tasks'
 		else 
 			@errors = {}
 			erb :'employees/create_employee'
