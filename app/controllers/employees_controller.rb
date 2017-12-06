@@ -51,9 +51,28 @@ class EmployeesController < ApplicationController
 
 	get '/login' do 
 		if logged_in? 
-			redirect '/show'
+			redirect '/tasks'
 		else 
 			erb :'employees/login'
+		end 
+	end
+
+	post '/login' do 
+		employee = Employee.find_by(username: params[:username])
+		if employee && employee.authenticate(params[:password])
+			session[:employee_id] = employee.id
+			redirect '/tasks'
+		else 
+			redirect '/signup'
+		end 
+	end 
+
+	get '/logout' do 
+		if logged_in?
+			session.clear 
+			redirect '/login'
+		else 
+			redirect '/'
 		end 
 	end
 
