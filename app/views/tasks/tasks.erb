@@ -1,3 +1,15 @@
-<h1>Welcome, <%= current_employee.name %></h1><br><br>
+<h1>Welcome!</h1><br><br>
 
-<h2>Here are your tasks:</h2>
+<h3>Employee Info:</h3>
+<p>Name: <%= current_employee.name %></p>
+<p>Username: <%= current_employee.username %></p>
+<p>Address: <%= current_employee.address %></p>
+<p>Start Date: <%= current_employee.start_date %></p>
+<p>Role: <%= current_employee.role.name %></p>
+
+
+<br>
+<h3>Your Tasks:</h3>
+
+<br>
+<a href="/logout">Log Out</a><br>
