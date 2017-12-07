@@ -10,6 +10,11 @@
 
 <br>
 <h3>Your Tasks:</h3>
+<% @tasks.each do |task| %>
+<div>
+<li>Task: <a href="/tasks/<%= task.id %>"><%= task.name %></a><br>
+Due Date: <%= task.due_date %><br><br></li>
+</div><br><br>
 
 
 <a href="/tasks/new">Create A New Task</a><br>
