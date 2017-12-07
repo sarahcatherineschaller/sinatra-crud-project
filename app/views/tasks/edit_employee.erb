@@ -1,9 +1,0 @@
-<h1>Edit Your Information Here:</h1>
-
-<form method="post" action="/tasks/edit_employee">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="name" value="<%= @employee.name %>">
-  <input type="text" name="address" value="<%= @employee.address %>">
-  <input type="text" name="start_date" value="<%= @employee.start_date %>">
-  <input type="submit" value="Submit">
-</form>
