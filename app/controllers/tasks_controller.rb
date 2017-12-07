@@ -17,12 +17,11 @@ class TasksController < ApplicationController
 		end 
 	end
 
-	post 'tasks' do 
+	post '/tasks' do 
 		if params[:name] == "" || params[:due_date] == ""
 			redirect '/tasks/new'
 		else 
-			employee = current_employee
-			@task = Task.create(name: params[:name], due_date: params[:due_date], employee_id: employee.id)
+			@task = Task.create(name: params[:name], due_date: params[:due_date], employee_id: current_employee.id)
 			redirect "/tasks/#{@task.id}"
 		end 
 	end
