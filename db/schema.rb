@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129210059) do
+ActiveRecord::Schema.define(version: 20171207215610) do
 
   create_table "employees", force: :cascade do |t|
     t.string "name"
     t.string "username"
     t.text "address"
     t.string "password_digest"
-    t.date "start_date"
+    t.string "start_date"
     t.integer "role_id"
   end
 
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20171129210059) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
-    t.date "due_date"
+    t.string "due_date"
     t.integer "employee_id"
   end
 
