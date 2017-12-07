@@ -57,6 +57,17 @@ class TasksController < ApplicationController
 		end 
 	end
 
+	patch '/tasks/edit_employee' do 
+		if logged_in?
+			@employee = current_employee
+			@employee.name = params[:name]
+			@employee.address = params[:address]
+			@employee.start_date = params[:start_date]
+			@employee.save 
+			redirect 'tasks'
+		end 
+	end
+
 	delete '/tasks/:id/delete' do 
 		if logged_in?
 			@task = Task.find_by(params[:id])
