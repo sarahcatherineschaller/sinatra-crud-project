@@ -6,14 +6,14 @@
 <p>Address: <%= current_employee.address %></p>
 <p>Start Date: <%= current_employee.start_date %></p>
 <p>Role: <%= current_employee.role.name %></p>
+<p>Department: <%= current_employee.role.department %></p>
 
 
 <br>
 <h3>Your Tasks:</h3>
 <% @tasks.each do |task| %>
 <div>
-<li>Task: <a href="/tasks/<%= task.id %>"><%= task.name %></a><br>
-Due Date: <%= task.due_date %><br><br></li>
+<li>Task: <a href="/tasks/<%= task.id %>"><%= task.name %></a>, Due Date: <%= task.due_date %><br><br>
 </div>
 <% end %>
 <br><br>
