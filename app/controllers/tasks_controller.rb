@@ -28,8 +28,11 @@ class TasksController < ApplicationController
 
 	get '/tasks/:id' do 
 		if logged_in?
-			@task = Task.find_by(params[:id])
-			erb :'/tasks/show_task'
+			if @task = current_employee.tasks.find_by(id: params[:id])
+				erb :'/tasks/show_task'
+			else 
+				redirect '/tasks'
+			end
 		else 
 			redirect '/login'
 		end 
@@ -37,35 +40,39 @@ class TasksController < ApplicationController
 
 	get '/tasks/:id/edit' do 
 		if logged_in?
-			@task = Task.find_by(params[:id])
-			erb :'/tasks/edit_task'
+			if @task = current_employee.tasks.find_by(id: params[:id])
+				erb :'/tasks/edit_task'
+			else 
+				redirect '/tasks'
+			end
 		else 
 			redirect '/login'
 		end 
 	end
 
 	patch '/tasks/:id' do 
-		if params[:name] == "" || params[:due_date] == ""
-			redirect "/tasks/#{params[:id]}/edit"
-		else
-			@task = Task.find_by(params[:id])
-			@task.name = params[:name]
-			@task.due_date = params[:due_date]
-			@task.save 
-			redirect "/tasks/#{@task.id}"
-		end 
+		if logged_in?
+			if params[:name] == "" || params[:due_date] == ""
+				redirect "/tasks/#{params[:id]}/edit"
+			else
+				@task = current_employee.tasks.find_by(id: params[:id])
+				@task.name = params[:name]
+				@task.due_date = params[:due_date]
+				@task.save 
+				redirect "/tasks/#{@task.id}"
+			end 
+		else 
+			redirect '/login'
+		end
 	end
-
 
 	delete '/tasks/:id/delete' do 
 		if logged_in?
-			@task = Task.find_by(params[:id])
+			@task = current_employee.tasks.find_by(id: params[:id])
 			if @task.employee_id == session[:employee_id]
 				@task.delete
-				redirect '/tasks'
-			else
-				redirect '/tasks'
-			end 
+			end
+			redirect '/tasks'
 		else 
 			redirect '/login'
 		end 

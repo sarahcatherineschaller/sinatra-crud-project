@@ -4,12 +4,13 @@ class EmployeesController < ApplicationController
 		if logged_in?
 			redirect '/tasks'
 		else 
-			@errors = {}
+			@roles = Role.all
 			erb :'employees/create_employee'
 		end 
 	end 
 
 	post '/signup' do 
+
 		@errors = {}
 		if params[:name] == ""
 			@errors[:name] = "Name can't be blank!"
@@ -41,9 +42,12 @@ class EmployeesController < ApplicationController
 
 		if @errors.empty? 
 			@employee = Employee.create(name: params[:name], username: params[:username], password: params[:password], address: params[:address], start_date: params[:start_date], role_id: params[:role_id])
-			@employee.save 
-			session[:employee_id] = @employee.id
-			redirect '/tasks'
+			if @employee.id
+				session[:employee_id] = @employee.id
+				redirect '/tasks'
+			else 
+				erb :'employees/create_employee'
+			end
 		else 
 			erb :'employees/create_employee'
 		end
