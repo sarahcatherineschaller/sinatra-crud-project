@@ -1,6 +1,6 @@
-# Employee Task Organizer
+# Task-anizer
 
-This is a Sinatra based app for employees to sign up and manage their roles and tasks within a company.
+This is a Sinatra based app for employees to sign up and organize their roles and tasks within a company.
 
 ## To run this app:
 
@@ -8,7 +8,7 @@ Fork and clone the repository. Run bundle install inside the directory. Start a 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/sarahcatherineschaller/employee-task-organizer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sarahcatherineschaller/task-anizer. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
 ## License
 
